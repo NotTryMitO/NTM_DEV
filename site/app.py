@@ -3,14 +3,18 @@ import requests
 import discord
 from discord.ext import commands, tasks
 import asyncio
+import os
+from dotenv import load_dotenv
 
 app = Quart(__name__)
-app.secret_key = 'banana-azul'
+app.secret_key = os.getenv("secret_key")
+
+load_dotenv()
 
 # Configurações do Discord
-CLIENT_ID = "1223660696584065187"  # Substitua com o seu Client ID
-CLIENT_SECRET = "S84HvfOL3oAPmpQ_GECp4RVj1AT4ZNJQ"  # Substitua com o seu Client Secret
-REDIRECT_URI = "http://127.0.0.1:5000/discord/callback"  # Substitua se necessário
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+REDIRECT_URI = os.getenv("REDIRECT_URI")
 
 # cenas do bot
 intents = discord.Intents.default()
@@ -21,8 +25,8 @@ intents.presences = True
 intents.reactions = True
 intents.integrations = True
 
-bot1_token = "MTIyMzY2MDY5NjU4NDA2NTE4Nw.GLSRHe.3YMG-1lWetuxwDGcflT0RY1WQx13BIi7XGvjC4" #bot main
-bot2_token = "MTMwMzcyODMyOTY4OTM5OTI5Nw.GS5TJb.8yExgyd0nBzm6fB1RBDd2JzGryMI8c_f8ObZX0" #bot ticket
+bot1_token = os.getenv("bot1_token") #bot main
+bot2_token = os.getenv("bot2_token") #bot ticket
 bot1 = commands.Bot(command_prefix="!", intents=intents) #bot main
 bot2 = commands.Bot(command_prefix=".", intents=intents) #bot ticket
 
