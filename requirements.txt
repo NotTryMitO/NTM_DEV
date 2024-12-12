@@ -1,6 +1,6 @@
 waitress
-quart
 requests
 discord.py
 python-dotenv
-gunicorn
+quart==0.18.0
+gunicorn==23.0.0
