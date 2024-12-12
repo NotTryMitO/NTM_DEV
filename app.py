@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 
 app = Quart(__name__)
-app.secret_key = os.getenv("secret_key")
+app.secret_key = 'bananaazul'
 
 load_dotenv()
 
@@ -121,7 +121,7 @@ async def logout():
     return redirect("/")
 
 async def start_quart_app():
-    await app.run_task(host="0.0.0.0", port=5000)
+    await app.run_task(host="127.0.0.1", port=5000)
 
 '''bot main - bot1 - starts'''
 #role automatica
